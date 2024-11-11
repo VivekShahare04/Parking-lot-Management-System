@@ -103,5 +103,24 @@
             </div>
         </div>
     </section>
+    <script>
+const search = () => {
+    var input_value = document.getElementById("text").value.toUpperCase();
+    var table = document.getElementById("table");
+    var tr = table.getElementsByTagName("tr");
+
+    for (var i = 1; i < tr.length; i++) { 
+        var td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            var text_value = td.textContent ;
+            if (text_value.toUpperCase().indexOf(input_value) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 </body>
 </html>
