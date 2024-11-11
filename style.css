@@ -1,0 +1,43 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.header {
+    background-image: url("images/sven-mieke-Zj6bUfkThFM-unsplash.jpg");
+    width: 100%;
+    height: 650px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#header {
+    background: #34495e;
+}
+
+#header h1 {
+    color: #ecf0f1;
+}
+
+.register {
+    margin: 40px 0px;
+    color: #34495e;
+}
+
+.register1 {
+    margin: 40px 0px;
+}
+.register1::after {
+    content: "";
+    width: 350px;
+    height: 4px;
+    background: #f39c12;
+    position: absolute;
+    top: 90px;
+    right: 35%;
+}
+
+.car {
+    width: 100px;
+    height: 100px;
+}
