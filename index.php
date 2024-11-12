@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -13,6 +14,12 @@
             <div class="row">
                 <div class="col-md-12 text-center" id="header">
                     <h1>Parking Management</h1>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="">All Records</a></li>
+                        <li><a href="">Make parking Admin</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -43,13 +50,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Entry Date:</span>
                         </div>
-                        <input type="text" name="entry_date" class="form-control">
+                        <input type="date" name="entry_date" class="form-control">
                     </div>
+                
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Exit Date:</span>
+                            <span class="input-group-text">Token Number:</span>
                         </div>
-                        <input type="text" name="exit_date" class="form-control">
+                        <input type="number" name="token" class="form-control">
                     </div>
                     <input type="submit" class="btn btn-primary mt-3">
                     </form>
@@ -66,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h2 class="register1">Parking History</h2>
+                    <h2 class="register1">All Vehicle Entry Records</h2>
                 </div>
             </div>
             <div class="row">
@@ -78,27 +86,46 @@
                         <input type="text" class="form-control" onkeyup="search()"id="text" placeholder="Enter vehicle details">
                     </div>
                     <table class="table table-striped">
+                        <?php
+                            $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("failed to connect");
+                            $sql = "select * from vehicle_info";
+                            $result = mysqli_query($conn,$sql) or die("failed to execute query");
+                            if(mysqli_num_rows($result)>0){
+                        ?>
                         <thead>
                             <tr>
-                            <th scope="col">Vehicle Owner Name</th>
+                            <th scope="col">Vehicle Owner Name</th> 
                             <th scope="col">Vehicle Name</th>
                             <th scope="col">Vehicle Number</th>
                             <th scope="col">Entry Date</th>
-                            <th scope="col">Exit Date</th>
+                            <th scope="col">Token Number</th>
+                            <th scope="col">Update Record</th>
                             <th scope="col">Delete Record</th>
                             </tr>
                         </thead>
+                        <?php
+                        while($row = mysqli_fetch_assoc($result)){
+                        ?>
                         <tbody>
                             <tr>
-                                <td>Vivek Shahare</td>
-                                <td>BMW</td>
-                                <td>MH45TR3456</td>
-                                <td>8/8/2024</td>
-                                <td>4/8/2024</td>
-                                <td><a href="delete-inline.php">Delete</a></td>
+                                <td><?php echo $row['Vehicle Owner Name'];?></td>
+                                <td><?php echo $row['Vehicle Name'];?></td>
+                                <td><?php echo $row['Vehicle_Number'];?></td>
+                                <td><?php echo $row['Entry Date'];?></td>
+                                <td><?php echo $row['Token Number'];?></td>
+                                <td><a href="update.php?vehicle_number=<?php echo $row["Vehicle_Number"]?>">Exit Date</a></td>
+                                <td><a href="delete-inline.php?vehicle_number=<?php echo $row["Vehicle_Number"]?>">Delete</a></td>
                             </tr>
                         </tbody>
+                        <?php
+                        }
+                        ?>
                     </table>
+                    <?php
+                    }else{
+                        echo "No records found";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
