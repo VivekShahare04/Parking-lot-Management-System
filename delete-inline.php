@@ -1,5 +1,5 @@
 <?php 
-@$vehicle_number = $_GET["vehicle_number"];
+@$vehicle_number = $_GET["Vehicle_Number"];
 $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("connection failed");
 $vehicle_number = mysqli_real_escape_string($conn, $vehicle_number);
 $sql = "DELETE FROM  vehicle_info where Vehicle_Number = '${vehicle_number}'";
