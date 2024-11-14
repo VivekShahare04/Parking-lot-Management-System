@@ -1,10 +1,9 @@
 <?php
-if (isset($_GET['Vehicle_Number'])) {
+
     //$vehicle_num = $_GET['Vehicle_Number'];
-    echo $vehicle_number = $_GET["Vehicle_Number"];
+@$token_number = $_GET['Token_Number'];
 $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("connection failed");
-$vehicle_number = mysqli_real_escape_string($conn, $vehicle_number);
-$sql = "SELECT * FROM vehicle_info where Vehicle_Number = '{$vehicle_number}'";
+$sql = "SELECT * FROM vehicle_info WHERE Token_Number = '{$token_number}'";
 $result = mysqli_query($conn, $sql) or die("Connection failed");
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)){
@@ -13,7 +12,7 @@ if (mysqli_num_rows($result) > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">`
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -37,25 +36,25 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="owner">Vehicle Owner Name:</span>
                         </div>
-                        <input type="text" name="owner_name" value="<?php echo $row['Vehicle Owner Name']?>" class="form-control">
+                        <input type="text" name="owner_name" value="<?php echo $row['Vehicle Owner Name'];?>" class="form-control">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Vehicle Name:</span>
                         </div>
-                        <input type="text" name="vehicle_name" value="<?php echo $row['Vehicle Name']?>"class="form-control">
+                        <input type="text" name="vehicle_name" value="<?php echo $row['Vehicle Name'];?>"class="form-control">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Vehicle Number:</span>
                         </div>
-                        <input type="text" name="vehicle_number" value="<?php echo $row['Vehicle_Number']?>" class="form-control">
+                        <input type="text" name="vehicle_number" value="<?php echo $row['Vehicle_Number'];?>" class="form-control">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Entry Date:</span>
                         </div>
-                        <input type="text" name="entry_date" value="<?php echo $row['Entry_Date'] ?>" class="form-control">
+                        <input type="text" name="entry_date" value="<?php echo $row['Entry_Date'];?>" class="form-control">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -67,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="input-group-prepend">
                             <span class="input-group-text">Token Number:</span>
                         </div>
-                        <input type="number" name="token" value="<?php echo $row['Token Number']?>"class="form-control">
+                        <input type="number" name="token" value="<?php echo $row['Token_Number'];?>"class="form-control">
                     </div>
                     <input type="submit" class="btn btn-primary mt-3">
                     </form>
@@ -86,12 +85,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <?php
     }
-    }else{
+    } else{
         echo "No vehicle found with this number.";
     }
-} else {
-    echo "No vehicle found with this number.";
-}
-
-
 ?>

@@ -88,7 +88,7 @@
                     <table class="table table-striped">
                         <?php
                             $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("failed to connect");
-                            $sql = "select * from vehicle_info";
+                            $sql = "SELECT * from vehicle_info";
                             $result = mysqli_query($conn,$sql) or die("failed to execute query");
                             if(mysqli_num_rows($result)>0){
                         ?>
@@ -112,8 +112,8 @@
                                 <td><?php echo $row['Vehicle Name'];?></td>
                                 <td><?php echo $row['Vehicle_Number'];?></td>
                                 <td><?php echo $row['Entry Date'];?></td>
-                                <td><?php echo $row['Token Number'];?></td>
-                                <td><a href="update.php?vehicle_number=<?php echo $row["Vehicle_Number"]?>">Exit Date</a></td>
+                                <td><?php echo $row['Token_Number'];?></td>
+                                <td><a href="update.php?token=<?php echo $row["Token_Number"]?>">Exit Date</a></td>
                                 <td><a href="delete-inline.php?vehicle_number=<?php echo $row["Vehicle_Number"]?>">Delete</a></td>
                             </tr>
                         </tbody>
