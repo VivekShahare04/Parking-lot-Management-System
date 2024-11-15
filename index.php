@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="record.php">All Records</a></li>
-                        <li><a href="">Make parking Admin</a></li>
+                        <li><a href="admin.php">Make parking Admin</a></li>
                         <li><a href="">Logout</a></li>
                     </ul>
                 </div>
