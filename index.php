@@ -83,12 +83,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Search</span>
                         </div>
-                        <input type="text" class="form-control" onkeyup="search()"id="text" placeholder="Enter vehicle details">
+                        <input type="text" class="form-control" onkeyup="search()" id="text" placeholder="Enter vehicle details">
                     </div>
                     <table class="table table-striped">
                         <?php
                             $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("failed to connect");
-                            $sql = "SELECT * from vehicle_info";
+                            $sql = "SELECT * FROM vehicle_info";
                             $result = mysqli_query($conn,$sql) or die("failed to execute query");
                             if(mysqli_num_rows($result)>0){
                         ?>
