@@ -13,10 +13,10 @@
     font-size: 40px;
   }
   
-  .admin-form {
+  .login-form,.admin-form {
     margin-top: 100px;
   }
-  .admin-form h1{
+  .login-form h1,.admin-form h1{
     font: size 32px;
  color: #34495e;
   }
@@ -24,7 +24,7 @@
   margin-top: 35px;
 }
 
-.admin-form label {
+.login-form label ,.admin-form label {
   font-size: 20px;
   color: #34495e;
   font-weight: bold;

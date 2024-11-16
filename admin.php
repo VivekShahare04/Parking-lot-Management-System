@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+<?php 
+session_start();
+if(!isset($_SESSION["username"])){
+    header("Location:  http://localhost/Parking-lot-Management-System/login.php");
+}else{
+    ?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +35,7 @@
   <div class="admin-form">
     <h1>Admin Form</h1>
     <form action="registration.php" method="post">
-      <label for="">Username:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="">Username:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" name="username" placeholder="Username"> <br><br>
       <label for="">Password: </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" name="password" placeholder="Password"><br><br>
@@ -41,3 +48,6 @@
 
 </body>
 </html>
+    <?php
+}
+?>

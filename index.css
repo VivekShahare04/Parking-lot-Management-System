@@ -53,3 +53,24 @@
     width: 100px;
     height: 100px;
 }
+
+#car {
+    text-transform: capitalize;
+    background: rgba(44, 62, 80, 0.6);
+    position: absolute;
+    padding: 20px;
+    margin: 100px 0px 0px 50px;
+    border-radius: 4px;
+  }
+  
+#car h2 {
+    color: rgba(225, 177, 44, 1.0);
+    letter-spacing: 1px;
+    text-align: center;
+}
+#car h3{
+    color: white;
+}
+#car h3 span {
+    color: rgba(225, 177, 44, 1.0);
+}

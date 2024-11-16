@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!isset($_SESSION["username"])){
+    header("Location:  http://localhost/Parking-lot-Management-System/login.php");
+}else{
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="header">
@@ -18,7 +24,7 @@
                         <li><a href="index.php">Home</a></li>
                         <li><a href="record.php">All Records</a></li>
                         <li><a href="admin.php">Make parking Admin</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a style="color:white" href="logout.php">Logout  <?php echo $_SESSION['username'];?></a></li>
                     </ul>
                 </div>
             </div>
@@ -64,6 +70,28 @@
                 </div>
 
                 <div class="col-md-6">
+                    <div id="car" >
+                        <?php
+ 
+ $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("failed to connect");
+ $sql = "SELECT * FROM vehicle_info";
+ $result = mysqli_query($conn,$sql) or die("failed to execute query");
+ $num = mysqli_num_rows($result);
+ if($num !=50){
+    ?>
+                        <h2>Parking Space Information</h2>
+                        <h3> Total space :<span> 50 </span></h3>
+                        <h3>Total Booked space: <span> <?php echo $num ?> </span></h3>
+                        <h3>Total Available : <span> <?php echo (50-$num)?> </span></h3>
+    <?php
+
+ }else{
+    echo "<h3>Sorry NO space available for parking </h3>";
+ }
+?>
+                       
+
+                    </div>
                     <img src="images/premium_photo-1673886205989-24c637783c60.avif" class="car" style="width: 700px; height:380px;margin-top:50px;" alt="car picture">
                 </div>
             </div>
@@ -86,11 +114,8 @@
                         <input type="text" class="form-control" onkeyup="search()" id="text" placeholder="Enter vehicle details">
                     </div>
                     <table class="table table-striped">
-                        <?php
-                            $conn = mysqli_connect("localhost","root","V2004@qwer#","Parking System") or die("failed to connect");
-                            $sql = "SELECT * FROM vehicle_info";
-                            $result = mysqli_query($conn,$sql) or die("failed to execute query");
-                            if(mysqli_num_rows($result)>0){
+                       <?php
+                            if($num >0){
                         ?>
                         <thead>
                             <tr>
@@ -151,3 +176,6 @@ const search = () => {
 </script>
 </body>
 </html>
+    <?php
+}
+?>
